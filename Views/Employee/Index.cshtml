@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Dashboard</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Food Name
+        </th>
+        <th>
+            Preserve time
+        </th>
+        <th>
+            Food Amount
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Restaurant name
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.FoodName
+            </td>
+            <td>
+                @item.PreserveTime
+            </td>
+            <td>
+                @item.FoodAmount
+            </td>
+            <td>
+                @item.Location
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @item.Restaurant.ResName
+            </td>
+            <td>
+                @if (item.Status == "Assigned")
+                {
+                    @Html.ActionLink("Accept Request", "Assign", new { id = item.FoodId }, new { @class = "btn btn-primary" })}
+                else
+                { <button class="btn btn-primary" disabled> Accept Request</button>}
+            </td>
+           
+            <td>
+                @if (item.Status == "Assigned")
+                {
+                    @Html.ActionLink("Cancel Request", "Cancel", new { id = item.FoodId }, new { @class = "btn btn-danger" })
+                }
+                else
+                {
+                    <button type="button" class="btn btn-danger" disabled>Cancel Request</button>
+                }
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+
+
+

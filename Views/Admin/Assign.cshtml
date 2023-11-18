@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Assign";
+}
+
+<h2>Assign</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Emp Id</th>
+        <th>Emp Name</th>
+        <th>Emp status</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.EmpName</td>
+        </tr>
+            }
+</table>
+

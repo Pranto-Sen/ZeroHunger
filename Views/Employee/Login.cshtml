@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login as Employee</h2>
+
+<form action="" method="post">
+    <input type="text" name="EmpName" class="form-control" placeholder="Employee name" /> <br />
+    <input type="password" name="Password" class="form-control" placeholder="Password" />
+    @if (TempData["Msg"] != null)
+    {
+        @*<h3 class="alert alert-danger">@TempData["Msg"]</h3>*@
+        <span class="text-danger"> @TempData["Msg"]</span>
+    }
+    <br /> <br />
+    <input type="submit" class="btn btn-success" value="Login" />
+    <a class="btn btn-primary" href="/Employee/Register">Create Employee</a>
+</form>

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Food Details</h2>
+<div class="card" style="width: 18rem;">
+   
+    <div class="card-body">
+        <h5 class="card-title">Food Name : @Model.FoodName</h5>
+        <p class="card-text">Food Preserve time : @Model.PreserveTime hr</p>
+        <p class="card-text">Food Amount : @Model.FoodAmount (Person)</p>
+        <p class="card-text">Food Status : @Model.Status</p>
+        <p class="card-text">
+         Assign Employee : 
+         @if (Model.Assign == null || Model.Assign == "NULL")
+         {<p>No Assign</p>}
+        else
+        {
+            @Model.Assign
+        }
+        </p>
+            @*<p class="card-text">@Model.Assign</p>*@
+
+            <form method="post">
+                <input name="FoodId" hidden value="@Model.FoodId" />
+                <input name="FoodName" hidden value="@Model.FoodName" />
+                <input name="PreserveTime" hidden value="@Model.PreserveTime" />
+                <input name="FoodAmount" hidden value="@Model.FoodAmount" />
+                <input name="Location" hidden value="@Model.Location" />
+                <input name="Status" hidden value="Assigned" />
+                <input name="ResId" hidden value="@Model.ResId" />
+                <label>Assign an Employee:</label>
+                <select name="Assign">
+
+                    @foreach (var e in ViewBag.Employees)
+                    {
+                        if (e.Status != "Assigned")
+                        {
+                            <option value="@e.EmpName">@e.EmpName</option>
+                        }
+                    }
+
+
+                </select>
+                <br /> <br />
+                @if (Model.Assign == null || Model.Assign == "NULL")
+                {<input type="submit" class="btn btn-primary" value="Assign" /> }
+                else
+                { <input type="submit" class="btn btn-primary" disabled value="Assign" />}
+            </form>
+            @* <a href="#" class="btn btn-primary"></a>*@
+
+        </div>
+</div>
+

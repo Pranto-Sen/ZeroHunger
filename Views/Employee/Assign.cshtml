@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Assign";
+}
+
+<h2>Food Info</h2>
+<form method="post">
+   
+        @*<input name="FoodId" hidden value="@Model.FoodId" />
+        <input name="FoodName" hidden value="@Model.FoodName" />
+        <input name="PreserveTime" hidden value="@Model.PreserveTime" />
+        <input name="FoodAmount" hidden value="@Model.FoodAmount" />
+        <input name="Location" hidden value="@Model.Location" />
+        <input name="Assign" hidden value="@Model.Assign" />
+        <input name="Status" hidden value="Deleverd" />
+        <input name="ResId" hidden value="@Model.ResId" />*@
+      
+      
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Food Name : @Model.FoodName</h5>
+            <p class="card-text">Pickup Location : @Model.Location</p>
+            <p class="card-text">PreserveTime : @Model.PreserveTime hr</p>
+            <p class="card-text">Food Amount : @Model.FoodAmount (Person)</p>
+            @*<a class="btn btn-success" @Html.ActionLink("Details", "Details", new { id = item.FoodId })>Assign </a>*@
+            <input type="submit" class="btn btn-success" value="Delevery Done" />
+        </div>
+    </div>
+</form>
+
+

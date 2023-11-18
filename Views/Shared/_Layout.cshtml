@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">Zero_Hunger</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    @if (Session["ResId"] == null && Session["admin"] == null && Session["EmpId"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Resturent/Login"> Restaurants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/Login"> Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/Login">Admin</a>
+                        </li>
+                    }
+                    @if (Session["ResId"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Food/Create">Donet Food</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Food/Index">All Donet Food List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Food/Foodlist">Your Donet Food list</a>
+                        </li>
+                    }
+                    @if (Session["EmpId"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/Index">All Deleverd Food List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/Assignfood">Assign Food List</a>
+                        </li>
+
+                    }
+                    @if (Session["admin"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/Availablefood">Available Food List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/Assignedfood">Assigned Food List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/Deleverdfood">All Deleverd Food list</a>
+                        </li>
+                    }
+
+                    @if (Session["admin"] != null || Session["ResId"] != null || Session["EmpId"] != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Logout">Logout</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @if (Session["EmpId"] != null)
+            {
+                <div class="nav-item" style="color: white;">
+                  <h4> Logged in as @Session["Name"]</h4>
+                </div>
+            }
+
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
